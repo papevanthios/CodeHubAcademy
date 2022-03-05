@@ -34,7 +34,6 @@ all the lists together).
 
 ---
 ### How it works based on methods inside BusinessCase Class:
-
 After we run the MainApplication, we go to the class BusinessCase inside the public method of userInterface(). \
 UserInterface() method display a welcome message and some actions for the user. When the user choose the action then the system will start generating
 data, or it will exit. \
@@ -51,6 +50,7 @@ tickets by handling for missing ticket data. \
 After all that we display the tickets at the console for the user. \
 At the end of the startingBusiness() method we ask again the user to choose an action. He can decide to generate a list or all of the or exit the program. \
 When the user make a choose, his preferred list or lists will be displayed and that will end the program.
+
 ---
 ### Requirements
 TravelCompany requires the following to run:
@@ -59,22 +59,3 @@ TravelCompany requires the following to run:
 ---
 ### Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-After we run the MainApplication, we go to the class BusinessCase inside the public method of userInterface(). \
-UserInterface() method display a welcome message and some actions for the user. When the user choose the action then the system will start generating
-data, or it will exit. \
-If the user choose to start the generating of the tickets (by choosing '0') then the system will go to the private
-method startingBusiness(). \
-StartingBusiness() method will generate Customers, Itineraries and Tickets based on generateCustomers() method, generatedItineraries() method and
-generateTickets() method. \
-GenerateCustomers() method will create the list of customers from repository package lists, and with correct exception handling
-we make sure to generate by hand the customer and check for email exception and customer data missing. \
-GenerateItineraries() method will create the list of itineraries from repository package lists, and with correct exception handling
-we make sure to generate by hand the itinerary and check for airport code missing for departure and destination and also for itinerary data missing. \
-GenerateTickets() method will get the payment amount based on the variables that is given to it. After calculating the payment amount then we will create the
-tickets by handling for missing ticket data. \
-After all that we display the tickets at the console for the user. \
-At the end of the startingBusiness() method we ask again the user to choose an action. He can decide to generate a list or all of the or exit the program. \
-When the user make a choose, his preferred list or lists will be displayed and that will end the program.
----
-
