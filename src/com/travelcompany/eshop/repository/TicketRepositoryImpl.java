@@ -1,6 +1,7 @@
 package com.travelcompany.eshop.repository;
 
 import com.travelcompany.eshop.exception.TicketException;
+import com.travelcompany.eshop.model.Customer;
 import com.travelcompany.eshop.model.Ticket;
 
 import java.util.ArrayList;
@@ -10,10 +11,10 @@ public class TicketRepositoryImpl implements TicketRepository{
     private final List<Ticket> tickets = new ArrayList<>();
 
     @Override
-    public boolean createTicket(Ticket ticket) {
+    public boolean createTicket(Ticket ticket) throws TicketException{
         if (ticket == null || ticket.getPaymentMethod() == null || ticket.getPassengerId() <= 0
                 || ticket.getItineraryId() <= 0 || ticket.getPaymentAmount() <= 0)
-            return false;
+            throw new TicketException("The ticket cannot be created because customer or itinerary doesn't exist."); // message
         tickets.add(ticket);
         return true;
     }
@@ -46,7 +47,7 @@ public class TicketRepositoryImpl implements TicketRepository{
     public boolean deleteTicket(int id) throws TicketException {
         Ticket ticket = readTicket(id);
         if (ticket == null)
-            throw new TicketException();
+            throw new TicketException("The ticket does not exist.");
         tickets.remove(ticket);
         return true;
     }

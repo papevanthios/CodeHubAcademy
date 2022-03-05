@@ -8,7 +8,7 @@ import java.util.List;
 public interface TicketRepository {
     //CRUD
 
-    boolean createTicket(Ticket ticket);
+    boolean createTicket(Ticket ticket) throws TicketException;
 
     Ticket readTicket(int id);
 

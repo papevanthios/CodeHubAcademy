@@ -11,7 +11,7 @@ import com.travelcompany.eshop.usecases.BusinessCase;
 
 public class Main {
     public static void main(String[] args) {
-        BusinessCase.businessInterfaceStart();
+        BusinessCase.service();
 
     }
 }

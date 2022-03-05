@@ -313,15 +313,43 @@ public class BusinessCase {
 
         // Generating the Tickets.
         TicketRepository tickets = new TicketRepositoryImpl();
-        tickets.createTicket(ticketService(1, customers.readCustomer(1), itineraries.readItinerary(2), "Cash"));
-        tickets.createTicket(ticketService(2, customers.readCustomer(2), itineraries.readItinerary(3), "Cash"));
-        tickets.createTicket(ticketService(3, customers.readCustomer(3), itineraries.readItinerary(3), "Credit Cart"));
-        tickets.createTicket(ticketService(4, customers.readCustomer(2), itineraries.readItinerary(4), "Credit Cart"));
-        tickets.createTicket(ticketService(5, customers.readCustomer(3), itineraries.readItinerary(4), "Cash"));
-        tickets.createTicket(ticketService(6, customers.readCustomer(4), itineraries.readItinerary(7), "Credit Cart"));
-        tickets.createTicket(ticketService(7, customers.readCustomer(5), itineraries.readItinerary(7), "Credit Cart"));
-        tickets.createTicket(ticketService(8, customers.readCustomer(2), itineraries.readItinerary(10), "Cash"));
-        tickets.createTicket(ticketService(9, customers.readCustomer(1), itineraries.readItinerary(3), "Cash"));
+        // Ticket1
+        try {tickets.createTicket(ticketService(1, customers.readCustomer(1), itineraries.readItinerary(2), "Cash"));}
+        catch (Exception e) {System.out.println(e.getMessage());}
+        // Ticket2
+        try {tickets.createTicket(ticketService(2, customers.readCustomer(2), itineraries.readItinerary(3), "Cash"));}
+        catch (Exception e) {System.out.println(e.getMessage());}
+        // Ticket3
+        try {tickets.createTicket(ticketService(3, customers.readCustomer(3), itineraries.readItinerary(3), "Credit Cart"));}
+        catch (Exception e) {System.out.println(e.getMessage());}
+        // Ticket4
+        try {tickets.createTicket(ticketService(4, customers.readCustomer(2), itineraries.readItinerary(4), "Credit Cart"));}
+        catch (Exception e) {System.out.println(e.getMessage());}
+        // Ticket5
+        try {tickets.createTicket(ticketService(5, customers.readCustomer(3), itineraries.readItinerary(4), "Cash"));}
+        catch (Exception e) {System.out.println(e.getMessage());}
+        // Ticket6
+        try {tickets.createTicket(ticketService(6, customers.readCustomer(4), itineraries.readItinerary(7), "Credit Cart"));}
+        catch (Exception e) {System.out.println(e.getMessage());}
+        // Ticket7
+        try {tickets.createTicket(ticketService(7, customers.readCustomer(5), itineraries.readItinerary(7), "Credit Cart"));}
+        catch (Exception e) {System.out.println(e.getMessage());}
+        // Ticket8
+        try {tickets.createTicket(ticketService(8, customers.readCustomer(2), itineraries.readItinerary(10), "Cash"));}
+        catch (Exception e) {System.out.println(e.getMessage());}
+        // Ticket9
+        try {tickets.createTicket(ticketService(9, customers.readCustomer(1), itineraries.readItinerary(3), "Cash"));}
+        catch (Exception e) {System.out.println(e.getMessage());}
+
+//        tickets.createTicket(ticketService(1, customers.readCustomer(1), itineraries.readItinerary(2), "Cash"));
+//        tickets.createTicket(ticketService(2, customers.readCustomer(2), itineraries.readItinerary(3), "Cash"));
+//        tickets.createTicket(ticketService(3, customers.readCustomer(3), itineraries.readItinerary(3), "Credit Cart"));
+//        tickets.createTicket(ticketService(4, customers.readCustomer(2), itineraries.readItinerary(4), "Credit Cart"));
+//        tickets.createTicket(ticketService(5, customers.readCustomer(3), itineraries.readItinerary(4), "Cash"));
+//        tickets.createTicket(ticketService(6, customers.readCustomer(4), itineraries.readItinerary(7), "Credit Cart"));
+//        tickets.createTicket(ticketService(7, customers.readCustomer(5), itineraries.readItinerary(7), "Credit Cart"));
+//        tickets.createTicket(ticketService(8, customers.readCustomer(2), itineraries.readItinerary(10), "Cash"));
+//        tickets.createTicket(ticketService(9, customers.readCustomer(1), itineraries.readItinerary(3), "Cash"));
 
         // Printing the Tickets.
         for (Ticket ticket : tickets.readTickets())
@@ -373,7 +401,7 @@ public class BusinessCase {
      *  -1  ->  To exit the program.
      *  This method check for exceptions for a bad user input, and it handles it.
      */
-    public static void businessInterfaceStart() {
+    public static void service() {
         // Starting the program.
         System.out.println("--- Welcome to TravelCompany ---\n");
 
