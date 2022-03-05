@@ -1,5 +1,6 @@
 package com.travelcompany.eshop.usecases;
 
+import com.travelcompany.eshop.exception.TicketException;
 import com.travelcompany.eshop.model.Customer;
 import com.travelcompany.eshop.model.Itinerary;
 import com.travelcompany.eshop.model.Ticket;
@@ -10,59 +11,6 @@ import java.util.*;
 
 public class BusinessCase {
     public static final Scanner scanner = new Scanner(System.in);
-
-    public static void changeAddress() {
-
-        int userChoose = Integer.MIN_VALUE;
-        do {
-            System.out.println("\tGive customer ID from 1-9.");
-            System.out.println("\tPress -1: To exit.");
-            try {
-                userChoose = scanner.nextInt();
-            }
-            catch (InputMismatchException ex) {
-                String badInput = scanner.next();
-                System.out.println("Bad input: '" + badInput + "' Please try again.");
-                System.out.println();
-                continue;
-            }
-        } while (userChoose != 1 && userChoose != 2 && userChoose != 3 && userChoose != 4 && userChoose != 5 &&
-                userChoose != 6 && userChoose != 7 && userChoose != 8 && userChoose != 9 && userChoose != -1);
-
-        System.out.println("Give new address.");
-        String newAddress = scanner.next();
-
-
-
-    }
-
-    public static void customerService(){
-        System.out.println("--- Welcome to TravelCompany Customer Service ---");
-        System.out.println();
-        int userChoose = Integer.MIN_VALUE;
-        do {
-            System.out.println("Choose how you want to start:");
-            System.out.println("\tPress 0: To change Customer address.");
-            System.out.println("\tPress -1: To exit.");
-            try {
-                userChoose = scanner.nextInt();
-            }
-            catch (InputMismatchException ex) {
-                String badInput = scanner.next();
-                System.out.println("Bad input: '" + badInput + "' Please try again.");
-                System.out.println();
-                continue;
-            }
-        } while (userChoose != 0 && userChoose != -1);
-
-        switch (userChoose) {
-            case 0 -> {
-                System.out.println("You want to change Customer address.");
-                changeAddress();
-            }
-            case -1 -> System.out.println("Exiting...");
-        }
-    }
 
     /**
      * Returns a hashtable with key the customer id and value the cost of tickets that he purchased.
@@ -232,7 +180,7 @@ public class BusinessCase {
      * @param paymentMethod takes the payment method.
      * @return the ticket with the appropriate parameters.
      */
-    private static Ticket ticketService(int ticketId, Customer customer, Itinerary itinerary, String paymentMethod) {
+    private static Ticket generateTickets(int ticketId, Customer customer, Itinerary itinerary, String paymentMethod) {
         // Creating Ticket.
         String categoryOfCustomer = customer.getCategory();
         BigDecimal basicPriceOfTicket = new BigDecimal(itinerary.getBasicPrice());
@@ -257,15 +205,24 @@ public class BusinessCase {
     private static CustomerRepository generateCustomers() {
         // Creating Customers.
         CustomerRepository customers = new CustomerRepositoryImpl();
-        customers.createCustomer(new Customer(1, "Maria Iordanou", "miordanou@mail.com", "Athens", "Greek", "Individual"));
-        customers.createCustomer(new Customer(2, "Dimitriou Dimitrios", "ddimitriou@mail.com", "Athens", "Greek", "Individual"));
-        customers.createCustomer(new Customer(3, "Ioannis Ioannou", "iioannou@mail.com", "Athens", "Greek", "Business"));
-        customers.createCustomer(new Customer(4, "Antonio Molinari", "amolinari@mail.com", "Milan", "Italian", "Individual"));
-        customers.createCustomer(new Customer(5, "Frederico Rossi", "frossi@mail.com", "Milan", "Italian", "Individual"));
-        customers.createCustomer(new Customer(6, "Mario Conti", "mconti@mail.com", "Rome", "Italian", "Business"));
-        customers.createCustomer(new Customer(7, "Nathan Martin", "nmartin@mail.com", "Lyon", "French", "Business"));
-        customers.createCustomer(new Customer(8, "Enzo Collin", "ecollin@mail.com", "Lyon", "French", "Individual"));
-        customers.createCustomer(new Customer(9, "Frederic Michel", "fmichel@mail.com", "Athens", "French", "Individual"));
+        try {customers.createCustomer(new Customer(1, "Maria Iordanou", "miordanou@mail.com", "Athens", "Greek", "Individual"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {customers.createCustomer(new Customer(2, "Dimitriou Dimitrios", "ddimitriou@mail.com", "Athens", "Greek", "Individual"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {customers.createCustomer(new Customer(3, "Ioannis Ioannou", "iioannou@mail.com", "Athens", "Greek", "Business"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {customers.createCustomer(new Customer(4, "Antonio Molinari", "amolinari@mail.com", "Milan", "Italian", "Individual"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {customers.createCustomer(new Customer(5, "Frederico Rossi", "frossi@mail.com", "Milan", "Italian", "Individual"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {customers.createCustomer(new Customer(6, "Mario Conti", "mconti@mail.com", "Rome", "Italian", "Business"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {customers.createCustomer(new Customer(7, "Nathan Martin", "nmartin@mail.com", "Lyon", "French", "Business"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {customers.createCustomer(new Customer(8, "Enzo Collin", "ecollin@mail.com", "Lyon", "French", "Individual"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {customers.createCustomer(new Customer(9, "Frederic Michel", "fmichel@mail.com", "Athens", "French", "Individual"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
 
         return customers;
     }
@@ -278,21 +235,30 @@ public class BusinessCase {
     private static ItineraryRepository generateItineraries() {
         // Creating Itineraries.
         ItineraryRepository itineraries = new ItineraryRepositoryImpl();
-        itineraries.createItinerary(new Itinerary(1, "ATH", "PAR", "2022-02-22 13:35:00", "SkyLines", 300));
-        itineraries.createItinerary(new Itinerary(2, "ATH", "LON", "2022-02-22 13:40:00", "SkyLines", 420));
-        itineraries.createItinerary(new Itinerary(3, "ATH", "AMS", "2022-02-22 13:45:00", "SkyLines", 280));
-        itineraries.createItinerary(new Itinerary(4, "ATH", "PAR", "2022-02-22 14:20:00", "SkyLines", 310));
-        itineraries.createItinerary(new Itinerary(7, "ATH", "DUB", "2022-02-22 14:35:00", "SkyLines", 880));
-        itineraries.createItinerary(new Itinerary(8, "ATH", "FRA", "2022-02-22 14:55:00", "SkyLines", 380));
-        itineraries.createItinerary(new Itinerary(9, "ATH", "FRA", "2022-02-22 15:35:00", "SkyLines", 350));
-        itineraries.createItinerary(new Itinerary(10, "ATH", "MEX", "2022-02-22 16:00:00", "SkyLines", 1020));
-        itineraries.createItinerary(new Itinerary(11, "ATH", "DUB", "2022-02-22 16:35:00", "SkyLines", 770));
+        try{itineraries.createItinerary(new Itinerary(1, "ATH", "PAR", "2022-02-22 13:35:00", "SkyLines", 300));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try{itineraries.createItinerary(new Itinerary(2, "ATH", "LON", "2022-02-22 13:40:00", "SkyLines", 420));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try{itineraries.createItinerary(new Itinerary(3, "ATH", "AMS", "2022-02-22 13:45:00", "SkyLines", 280));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {itineraries.createItinerary(new Itinerary(4, "ATH", "PAR", "2022-02-22 14:20:00", "SkyLines", 310));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {itineraries.createItinerary(new Itinerary(7, "ATH", "DUB", "2022-02-22 14:35:00", "SkyLines", 880));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {itineraries.createItinerary(new Itinerary(8, "ATH", "FRA", "2022-02-22 14:55:00", "SkyLines", 380));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {itineraries.createItinerary(new Itinerary(9, "ATH", "FRA", "2022-02-22 15:35:00", "SkyLines", 350));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {itineraries.createItinerary(new Itinerary(10, "ATH", "MEX", "2022-02-22 16:00:00", "SkyLines", 1020));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        try {itineraries.createItinerary(new Itinerary(11, "ATH", "DUB", "2022-02-22 16:35:00", "SkyLines", 770));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
 
         return itineraries;
     }
 
     /**
-     * StartBusiness() will generate Customers from generateCustomers() method, Itineraries from
+     * staringBusiness() will generate Customers from generateCustomers() method, Itineraries from
      * generateItineraries() method and Tickets from ticketsService() method.
      * After the generation of Customers, Itineraries and Tickets. The StartBusiness() method will continue with
      * the Reporting part or exit the program.
@@ -304,7 +270,7 @@ public class BusinessCase {
      * -1   ->  To exit the program.
      * This method check for exceptions for a bad user input, and it handles it.
      */
-    private static void startBusiness() {
+    private static void staringBusiness() {
         // Generating the Customers and Itineraries.
         CustomerRepository customers = generateCustomers();
         ItineraryRepository itineraries = generateItineraries();
@@ -314,42 +280,32 @@ public class BusinessCase {
         // Generating the Tickets.
         TicketRepository tickets = new TicketRepositoryImpl();
         // Ticket1
-        try {tickets.createTicket(ticketService(1, customers.readCustomer(1), itineraries.readItinerary(2), "Cash"));}
-        catch (Exception e) {System.out.println(e.getMessage());}
+        try {tickets.createTicket(generateTickets(1, customers.readCustomer(1), itineraries.readItinerary(2), "Cash"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
         // Ticket2
-        try {tickets.createTicket(ticketService(2, customers.readCustomer(2), itineraries.readItinerary(3), "Cash"));}
-        catch (Exception e) {System.out.println(e.getMessage());}
+        try {tickets.createTicket(generateTickets(2, customers.readCustomer(2), itineraries.readItinerary(3), "Cash"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
         // Ticket3
-        try {tickets.createTicket(ticketService(3, customers.readCustomer(3), itineraries.readItinerary(3), "Credit Cart"));}
-        catch (Exception e) {System.out.println(e.getMessage());}
+        try {tickets.createTicket(generateTickets(3, customers.readCustomer(3), itineraries.readItinerary(3), "Credit Cart"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
         // Ticket4
-        try {tickets.createTicket(ticketService(4, customers.readCustomer(2), itineraries.readItinerary(4), "Credit Cart"));}
-        catch (Exception e) {System.out.println(e.getMessage());}
+        try {tickets.createTicket(generateTickets(4, customers.readCustomer(2), itineraries.readItinerary(4), "Credit Cart"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
         // Ticket5
-        try {tickets.createTicket(ticketService(5, customers.readCustomer(3), itineraries.readItinerary(4), "Cash"));}
-        catch (Exception e) {System.out.println(e.getMessage());}
+        try {tickets.createTicket(generateTickets(5, customers.readCustomer(3), itineraries.readItinerary(4), "Cash"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
         // Ticket6
-        try {tickets.createTicket(ticketService(6, customers.readCustomer(4), itineraries.readItinerary(7), "Credit Cart"));}
-        catch (Exception e) {System.out.println(e.getMessage());}
+        try {tickets.createTicket(generateTickets(6, customers.readCustomer(4), itineraries.readItinerary(7), "Credit Cart"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
         // Ticket7
-        try {tickets.createTicket(ticketService(7, customers.readCustomer(5), itineraries.readItinerary(7), "Credit Cart"));}
-        catch (Exception e) {System.out.println(e.getMessage());}
+        try {tickets.createTicket(generateTickets(7, customers.readCustomer(5), itineraries.readItinerary(7), "Credit Cart"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
         // Ticket8
-        try {tickets.createTicket(ticketService(8, customers.readCustomer(2), itineraries.readItinerary(10), "Cash"));}
-        catch (Exception e) {System.out.println(e.getMessage());}
+        try {tickets.createTicket(generateTickets(8, customers.readCustomer(2), itineraries.readItinerary(10), "Cash"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
         // Ticket9
-        try {tickets.createTicket(ticketService(9, customers.readCustomer(1), itineraries.readItinerary(3), "Cash"));}
-        catch (Exception e) {System.out.println(e.getMessage());}
-
-//        tickets.createTicket(ticketService(1, customers.readCustomer(1), itineraries.readItinerary(2), "Cash"));
-//        tickets.createTicket(ticketService(2, customers.readCustomer(2), itineraries.readItinerary(3), "Cash"));
-//        tickets.createTicket(ticketService(3, customers.readCustomer(3), itineraries.readItinerary(3), "Credit Cart"));
-//        tickets.createTicket(ticketService(4, customers.readCustomer(2), itineraries.readItinerary(4), "Credit Cart"));
-//        tickets.createTicket(ticketService(5, customers.readCustomer(3), itineraries.readItinerary(4), "Cash"));
-//        tickets.createTicket(ticketService(6, customers.readCustomer(4), itineraries.readItinerary(7), "Credit Cart"));
-//        tickets.createTicket(ticketService(7, customers.readCustomer(5), itineraries.readItinerary(7), "Credit Cart"));
-//        tickets.createTicket(ticketService(8, customers.readCustomer(2), itineraries.readItinerary(10), "Cash"));
-//        tickets.createTicket(ticketService(9, customers.readCustomer(1), itineraries.readItinerary(3), "Cash"));
+        try {tickets.createTicket(generateTickets(9, customers.readCustomer(1), itineraries.readItinerary(3), "Cash"));}
+        catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
 
         // Printing the Tickets.
         for (Ticket ticket : tickets.readTickets())
@@ -373,7 +329,6 @@ public class BusinessCase {
             catch (InputMismatchException ex) {
                 String badInput = scanner.next();
                 System.out.println("Bad input: '" + badInput + "' Please try again.\n");
-                continue;
             }
         } while (userChoose != 0 && userChoose != 1 && userChoose != 2 && userChoose != 3 && userChoose != 4 && userChoose != -1);
 
@@ -394,14 +349,14 @@ public class BusinessCase {
     }
 
     /**
-     * BusinessInterfaceStart() will start our program with a welcome note of the TravelCompany, and then
+     * userInterface() will start our program with a welcome note of the TravelCompany, and then
      * it will wait for the user to select preferred action or exit the program.
      * Actions of selection are:
      *  0   ->  To generate Customers, Itineraries and Tickets.
      *  -1  ->  To exit the program.
      *  This method check for exceptions for a bad user input, and it handles it.
      */
-    public static void service() {
+    public static void userInterface() {
         // Starting the program.
         System.out.println("--- Welcome to TravelCompany ---\n");
 
@@ -417,16 +372,12 @@ public class BusinessCase {
             catch (InputMismatchException ex) {
                 String badInput = scanner.next();
                 System.out.println("Bad input: '" + badInput + "' Please try again.\n");
-                continue;
             }
         } while (userChoose != 0 && userChoose != 1 && userChoose != -1);
 
         // Based on the user choose we start generating or exiting the program.
         switch (userChoose) {
-            case 0 -> {
-                System.out.println("You want to generate tickets.");
-                startBusiness();
-            }
+            case 0 -> staringBusiness();
             case -1 -> System.out.println("Exiting...");
         }
     }

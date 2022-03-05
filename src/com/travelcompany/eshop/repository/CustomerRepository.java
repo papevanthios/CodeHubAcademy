@@ -8,13 +8,13 @@ import java.util.List;
 public interface CustomerRepository {
     //CRUD
 
-    boolean createCustomer(Customer customer);
+    boolean createCustomer(Customer customer) throws CustomerException;
 
-    Customer readCustomer(int id);
+    Customer readCustomer(int id) throws CustomerException;
 
     List<Customer> readCustomers();
 
-    boolean updateCustomer(int id, String newAddress);
+    boolean updateCustomer(int id, String newAddress) throws CustomerException;
 
     boolean deleteCustomer(int id) throws CustomerException;
 }

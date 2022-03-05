@@ -10,11 +10,11 @@ public interface TicketRepository {
 
     boolean createTicket(Ticket ticket) throws TicketException;
 
-    Ticket readTicket(int id);
+    Ticket readTicket(int id) throws TicketException;
 
     List<Ticket> readTickets();
 
-    boolean updateTicket(int id, String newPaymentMethod);
+    boolean updateTicket(int id, String newPaymentMethod) throws TicketException;
 
     boolean deleteTicket(int id) throws TicketException;
 }

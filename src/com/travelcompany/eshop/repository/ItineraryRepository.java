@@ -8,13 +8,13 @@ import java.util.List;
 public interface ItineraryRepository {
     //CRUD
 
-    boolean createItinerary(Itinerary itinerary);
+    boolean createItinerary(Itinerary itinerary) throws ItineraryException;
 
-    Itinerary readItinerary(int id);
+    Itinerary readItinerary(int id) throws ItineraryException;
 
     List<Itinerary> readItineraries();
 
-    boolean updateItinerary(int id, int newBasicPrice);
+    boolean updateItinerary(int id, int newBasicPrice) throws ItineraryException;
 
     boolean deleteItinerary(int id) throws ItineraryException;
 }

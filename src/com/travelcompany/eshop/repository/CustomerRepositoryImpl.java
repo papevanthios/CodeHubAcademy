@@ -11,20 +11,20 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     private final List<Customer> customers = new ArrayList<>();
 
     @Override
-    public boolean createCustomer(Customer customer) {
+    public boolean createCustomer(Customer customer) throws CustomerException{
         if (customer == null || customer.getName() == null || customer.getEmail() == null
                 || customer.getAddress() == null || customer.getNationality() == null || customer.getCategory() == null)
-            return false;
+            throw new CustomerException("Customer dara missing.");
         customers.add(customer);
         return true;
     }
 
     @Override
-    public Customer readCustomer(int id) {
+    public Customer readCustomer(int id) throws CustomerException{
         for (Customer customer: customers)
             if (customer.getId() == id)
                 return customer;
-        return null;
+        throw new CustomerException("Customer does not exist.");
     }
 
     @Override
@@ -35,10 +35,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     @Override
-    public boolean updateCustomer(int id, String newAddress) {
+    public boolean updateCustomer(int id, String newAddress) throws CustomerException {
         Customer customer = readCustomer(id);
         if (customer == null)
-            return false;
+            throw new CustomerException("Customer does not exist.");
         customer.setAddress(newAddress);
         return true;
     }
@@ -47,7 +47,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     public boolean deleteCustomer(int id) throws CustomerException {
         Customer customer = readCustomer(id);
         if (customer == null)
-            throw new CustomerException();
+            throw new CustomerException("Customer does not exist.");
         customers.remove(customer);
         return true;
     }

@@ -12,19 +12,19 @@ public class TicketRepositoryImpl implements TicketRepository{
 
     @Override
     public boolean createTicket(Ticket ticket) throws TicketException{
-        if (ticket == null || ticket.getPaymentMethod() == null || ticket.getPassengerId() <= 0
-                || ticket.getItineraryId() <= 0 || ticket.getPaymentAmount() <= 0)
-            throw new TicketException("The ticket cannot be created because customer or itinerary doesn't exist."); // message
+        if (ticket == null || ticket.getPaymentMethod() == null || ticket.getPassengerId() <= 0 || ticket.getPassengerId() >= 10
+                || ticket.getItineraryId() <= 0 || ticket.getItineraryId() >= 12 || ticket.getPaymentAmount() <= 0)
+            throw new TicketException("The ticket data are missing.");
         tickets.add(ticket);
         return true;
     }
 
     @Override
-    public Ticket readTicket(int id) {
+    public Ticket readTicket(int id) throws TicketException {
         for (Ticket ticket : tickets)
             if (ticket.getId() == id)
                 return ticket;
-        return null;
+        throw new TicketException("The ticket does not exist.");
     }
 
     @Override
@@ -35,10 +35,10 @@ public class TicketRepositoryImpl implements TicketRepository{
     }
 
     @Override
-    public boolean updateTicket(int id, String newPaymentMethod) {
+    public boolean updateTicket(int id, String newPaymentMethod) throws TicketException {
         Ticket ticket = readTicket(id);
         if (ticket == null)
-            return false;
+            throw new TicketException("The ticket does not exist.");
         ticket.getPaymentMethod();
         return true;
     }
