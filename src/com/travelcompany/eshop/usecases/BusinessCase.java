@@ -198,31 +198,87 @@ public class BusinessCase {
     }
 
     /**
-     * Returns all the Customers of TravelCompany.
+     * Returns all the Customers of TravelCompany. We handle customer email error and if the customer id error.
      *
      * @return the customers of TravelCompany
      */
     private static CustomerRepository generateCustomers() {
         // Creating Customers.
+        // First we create the customer. We check for email error and we handle it. And then we create the customer and add
+        // the to the customers list by checking again for customer error.
         CustomerRepository customers = new CustomerRepositoryImpl();
-        try {customers.createCustomer(new Customer(1, "Maria Iordanou", "miordanou@mail.com", "Athens", "Greek", "Individual"));}
+        Customer customer = null;
+        try {customer = new Customer(1, "Maria Iordanou", "miordanou@mail.com", "Athens", "Greek", "Individual");}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {customers.createCustomer(new Customer(2, "Dimitriou Dimitrios", "ddimitriou@mail.com", "Athens", "Greek", "Individual"));}
+        if (customer != null) {
+            try {
+                customers.createCustomer(customer);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        customer = null;
+        try {customer = new Customer(2, "Dimitriou Dimitrios", "ddimitriou@mail.com", "Athens", "Greek", "Individual");}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {customers.createCustomer(new Customer(3, "Ioannis Ioannou", "iioannou@mail.com", "Athens", "Greek", "Business"));}
+        if (customer != null) {
+            try {
+                customers.createCustomer(customer);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        customer = null;
+        try {customer = new Customer(3, "Ioannis Ioannou", "iioannou@mail.com", "Athens", "Greek", "Business");}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {customers.createCustomer(new Customer(4, "Antonio Molinari", "amolinari@mail.com", "Milan", "Italian", "Individual"));}
+        if (customer != null) {
+            try {
+                customers.createCustomer(customer);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        customer = null;
+        try {customer = new Customer(4, "Antonio Molinari", "amolinari@mail.com", "Milan", "Italian", "Individual");}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {customers.createCustomer(new Customer(5, "Frederico Rossi", "frossi@mail.com", "Milan", "Italian", "Individual"));}
+        if (customer != null) {
+            try {
+                customers.createCustomer(customer);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        customer = null;
+        try {customer = new Customer(5, "Frederico Rossi", "frossi@mail.com", "Milan", "Italian", "Individual");}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {customers.createCustomer(new Customer(6, "Mario Conti", "mconti@mail.com", "Rome", "Italian", "Business"));}
+        if (customer != null) {
+            try {
+                customers.createCustomer(customer);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        customer = null;
+        try {customer = new Customer(6, "Mario Conti", "mconti@mail.com", "Rome", "Italian", "Business");}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {customers.createCustomer(new Customer(7, "Nathan Martin", "nmartin@mail.com", "Lyon", "French", "Business"));}
+        if (customer != null) {
+            try {
+                customers.createCustomer(customer);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        customer = null;
+        try {customer = new Customer(7, "Nathan Martin", "nmartin@mail.com", "Lyon", "French", "Business");}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {customers.createCustomer(new Customer(8, "Enzo Collin", "ecollin@mail.com", "Lyon", "French", "Individual"));}
+        if (customer != null) {
+            try {
+                customers.createCustomer(customer);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        customer = null;
+        try {customer = new Customer(8, "Enzo Collin", "ecollin@mail.com", "Lyon", "French", "Individual");}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {customers.createCustomer(new Customer(9, "Frederic Michel", "fmichel@mail.com", "Athens", "French", "Individual"));}
+        if (customer != null) {
+            try {
+                customers.createCustomer(customer);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        customer = null;
+        try {customer = new Customer(9, "Frederic Michel", "fmichel@mail.com", "Athens", "French", "Individual");}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        if (customer != null) {
+            try {
+                customers.createCustomer(customer);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
 
         return customers;
     }
@@ -278,6 +334,9 @@ public class BusinessCase {
         System.out.println("Tickets Generated...\n");
 
         // Generating the Tickets.
+        // We consider that the below code for generating tickets, we have taken into account that the customers exists, and we
+        // go by hand and add the customer ids. If customers did not been created due to mail error, then we have to implement our code differently.
+        // Since we go by hand there is no need for checking for customers ids.
         TicketRepository tickets = new TicketRepositoryImpl();
         // Ticket1
         try {tickets.createTicket(generateTickets(1, customers.readCustomer(1), itineraries.readItinerary(2), "Cash"));}
