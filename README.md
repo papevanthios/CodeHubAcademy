@@ -37,7 +37,7 @@ all the lists together).
 After we run the MainApplication, we go to the class BusinessCase inside the public method of userInterface(). \
 UserInterface() method display a welcome message and some actions for the user. When the user choose the action then the system will start generating
 data, or it will exit. \
-If the user choose to start the generating of the tickets (by choosing '0') then the system will go to the private 
+If the user choose to start the generating of the tickets (by choosing '0') then the system will go to the private
 method startingBusiness(). \
 StartingBusiness() method will generate Customers, Itineraries and Tickets based on generateCustomers() method, generatedItineraries() method and
 generateTickets() method. \
@@ -51,6 +51,7 @@ After all that we display the tickets at the console for the user. \
 At the end of the startingBusiness() method we ask again the user to choose an action. He can decide to generate a list or all of the or exit the program. \
 When the user make a choose, his preferred list or lists will be displayed and that will end the program.
 ---
+
 ### Requirements
 TravelCompany requires the following to run:
 * JDK 17 or newer.
