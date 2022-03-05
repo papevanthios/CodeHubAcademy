@@ -14,7 +14,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     public boolean createCustomer(Customer customer) throws CustomerException{
         if (customer == null || customer.getName() == null || customer.getEmail() == null
                 || customer.getAddress() == null || customer.getNationality() == null || customer.getCategory() == null)
-            throw new CustomerException("Customer dara missing.");
+            throw new CustomerException("Customer data missing.");
         customers.add(customer);
         return true;
     }

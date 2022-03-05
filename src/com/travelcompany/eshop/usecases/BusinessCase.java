@@ -1,6 +1,5 @@
 package com.travelcompany.eshop.usecases;
 
-import com.travelcompany.eshop.exception.TicketException;
 import com.travelcompany.eshop.model.Customer;
 import com.travelcompany.eshop.model.Itinerary;
 import com.travelcompany.eshop.model.Ticket;
@@ -360,7 +359,7 @@ public class BusinessCase {
     }
 
     /**
-     * staringBusiness() will generate Customers from generateCustomers() method, Itineraries from
+     * startingBusiness() will generate Customers from generateCustomers() method, Itineraries from
      * generateItineraries() method and Tickets from ticketsService() method.
      * After the generation of Customers, Itineraries and Tickets. The StartBusiness() method will continue with
      * the Reporting part or exit the program.
@@ -372,7 +371,7 @@ public class BusinessCase {
      * -1   ->  To exit the program.
      * This method check for exceptions for a bad user input, and it handles it.
      */
-    private static void staringBusiness() {
+    private static void startingBusiness() {
         // Generating the Customers and Itineraries.
         CustomerRepository customers = generateCustomers();
         ItineraryRepository itineraries = generateItineraries();
@@ -482,7 +481,7 @@ public class BusinessCase {
 
         // Based on the user choose we start generating or exiting the program.
         switch (userChoose) {
-            case 0 -> staringBusiness();
+            case 0 -> startingBusiness();
             case -1 -> System.out.println("Exiting...");
         }
     }
