@@ -284,31 +284,77 @@ public class BusinessCase {
     }
 
     /**
-     * Returns all the Itineraries of TravelCompany.
+     * Returns all the Itineraries of TravelCompany. We handle airport code missing and airport id missing.
      *
      * @return the itineraries of TravelCompany
      */
     private static ItineraryRepository generateItineraries() {
         // Creating Itineraries.
+        // We first create the itineraries. Then we handle if there is a null airport code for destination or departure, and then we handle for itinerary missing.
         ItineraryRepository itineraries = new ItineraryRepositoryImpl();
-        try{itineraries.createItinerary(new Itinerary(1, "ATH", "PAR", "2022-02-22 13:35:00", "SkyLines", 300));}
+        Itinerary itinerary = null;
+        try{itinerary = new Itinerary(1, "ATH", "PAR", "2022-02-22 13:35:00", "SkyLines", 300);}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try{itineraries.createItinerary(new Itinerary(2, "ATH", "LON", "2022-02-22 13:40:00", "SkyLines", 420));}
+        if (itinerary != null){
+            try {itineraries.createItinerary(itinerary);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        itinerary = null;
+        try{itinerary = new Itinerary(2, "ATH", "LON", "2022-02-22 13:40:00", "SkyLines", 420);}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try{itineraries.createItinerary(new Itinerary(3, "ATH", "AMS", "2022-02-22 13:45:00", "SkyLines", 280));}
+        if (itinerary != null){
+            try {itineraries.createItinerary(itinerary);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        itinerary = null;
+        try{itinerary = new Itinerary(3, "ATH", "AMS", "2022-02-22 13:45:00", "SkyLines", 280);}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {itineraries.createItinerary(new Itinerary(4, "ATH", "PAR", "2022-02-22 14:20:00", "SkyLines", 310));}
+        if (itinerary != null){
+            try {itineraries.createItinerary(itinerary);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        itinerary = null;
+        try{itinerary = new Itinerary(4, "ATH", "PAR", "2022-02-22 14:20:00", "SkyLines", 310);}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {itineraries.createItinerary(new Itinerary(7, "ATH", "DUB", "2022-02-22 14:35:00", "SkyLines", 880));}
+        if (itinerary != null){
+            try {itineraries.createItinerary(itinerary);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        itinerary = null;
+        try{itinerary = new Itinerary(7, "ATH", "DUB", "2022-02-22 14:35:00", "SkyLines", 880);}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {itineraries.createItinerary(new Itinerary(8, "ATH", "FRA", "2022-02-22 14:55:00", "SkyLines", 380));}
+        if (itinerary != null){
+            try {itineraries.createItinerary(itinerary);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        itinerary = null;
+        try{itinerary = new Itinerary(8, "ATH", "FRA", "2022-02-22 14:55:00", "SkyLines", 380);}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {itineraries.createItinerary(new Itinerary(9, "ATH", "FRA", "2022-02-22 15:35:00", "SkyLines", 350));}
+        if (itinerary != null){
+            try {itineraries.createItinerary(itinerary);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        itinerary = null;
+        try{itinerary = new Itinerary(9, "ATH", "FRA", "2022-02-22 15:35:00", "SkyLines", 350);}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {itineraries.createItinerary(new Itinerary(10, "ATH", "MEX", "2022-02-22 16:00:00", "SkyLines", 1020));}
+        if (itinerary != null){
+            try {itineraries.createItinerary(itinerary);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        itinerary = null;
+        try{itinerary = new Itinerary(10, "ATH", "MEX", "2022-02-22 16:00:00", "SkyLines", 1020);}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
-        try {itineraries.createItinerary(new Itinerary(11, "ATH", "DUB", "2022-02-22 16:35:00", "SkyLines", 770));}
+        if (itinerary != null){
+            try {itineraries.createItinerary(itinerary);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
+        itinerary = null;
+        try{itinerary = new Itinerary(11, "ATH", "DUB", "2022-02-22 16:35:00", "SkyLines", 770);}
         catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        if (itinerary != null){
+            try {itineraries.createItinerary(itinerary);}
+            catch (Exception e) {System.out.println("Received the message, '" + e.getMessage() + "'.\n");}
+        }
 
         return itineraries;
     }
