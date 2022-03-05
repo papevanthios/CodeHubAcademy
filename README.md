@@ -27,7 +27,7 @@ The TravelCompany program implements the below:
 
 ---
 ### Steps for the project to run.
-After copying the files on your local machine. Then you only need to run the MainApplication class and the rest of 
+After copying the files on your local machine. Then you only need to run the Main class and the rest of 
 the program will take you forth. The program will ask you for preferred actions to take, to see the complete project
 and all the lists of Reporting we suggest making the chooses (first '0' -> to start, and then second '4' -> to generate
 all the lists together).
