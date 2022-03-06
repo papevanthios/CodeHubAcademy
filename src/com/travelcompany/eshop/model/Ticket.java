@@ -1,3 +1,10 @@
+/**
+ * The Ticket class represents the set of properties that are common to all objects of this type.
+ *
+ * @author Evanthios Papadopoulos
+ * @since 02-Mar-22
+ */
+
 package com.travelcompany.eshop.model;
 
 public class Ticket {

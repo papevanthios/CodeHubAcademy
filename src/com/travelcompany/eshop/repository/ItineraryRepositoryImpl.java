@@ -1,3 +1,10 @@
+/**
+ * The ItineraryRepositoryImpl class inherit the properties of the ItineraryRepository class.
+ *
+ * @author Evanthios Papadopoulos
+ * @since 02-Mar-22
+ */
+
 package com.travelcompany.eshop.repository;
 
 import com.travelcompany.eshop.exception.ItineraryException;

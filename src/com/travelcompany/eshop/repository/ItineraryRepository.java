@@ -1,3 +1,10 @@
+/**
+ * The ItineraryRepository interface specify the behavior of the ItineraryRepositoryImpl class.
+ *
+ * @author Evanthios Papadopoulos
+ * @since 02-Mar-22
+ */
+
 package com.travelcompany.eshop.repository;
 
 import com.travelcompany.eshop.exception.ItineraryException;

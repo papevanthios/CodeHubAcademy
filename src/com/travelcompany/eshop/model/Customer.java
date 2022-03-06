@@ -1,3 +1,10 @@
+/**
+ * The Customer class represents the set of properties that are common to all objects of this type.
+ *
+ * @author Evanthios Papadopoulos
+ * @since 02-Mar-22
+ */
+
 package com.travelcompany.eshop.model;
 
 import com.travelcompany.eshop.exception.CustomerEmailException;

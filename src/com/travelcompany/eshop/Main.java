@@ -1,5 +1,5 @@
 /**
- * The Main starts the Business from package use-cases.
+ * The Main class starts the BusinessCase class from package use-cases.
  *
  * @author Evanthios Papadopoulos
  * @since 02-Mar-22

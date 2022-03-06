@@ -1,3 +1,10 @@
+/**
+ * The TicketRepository interface specify the behavior of the TicketRepositoryImpl class.
+ *
+ * @author Evanthios Papadopoulos
+ * @since 02-Mar-22
+ */
+
 package com.travelcompany.eshop.repository;
 
 import com.travelcompany.eshop.exception.TicketException;

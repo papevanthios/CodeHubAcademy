@@ -1,3 +1,10 @@
+/**
+ * The CustomerRepositoryImpl class inherit the properties of the CustomerRepository class.
+ *
+ * @author Evanthios Papadopoulos
+ * @since 02-Mar-22
+ */
+
 package com.travelcompany.eshop.repository;
 
 import com.travelcompany.eshop.exception.CustomerException;

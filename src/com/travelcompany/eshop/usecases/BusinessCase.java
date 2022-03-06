@@ -1,8 +1,13 @@
+/**
+ * The BusinessCase class generates Customers, Itineraries, Tickets and lists of reports for the user.
+ *
+ * @author Evanthios Papadopoulos
+ * @since 02-Mar-22
+ */
+
 package com.travelcompany.eshop.usecases;
 
-import com.travelcompany.eshop.model.Customer;
-import com.travelcompany.eshop.model.Itinerary;
-import com.travelcompany.eshop.model.Ticket;
+import com.travelcompany.eshop.model.*;
 import com.travelcompany.eshop.repository.*;
 
 import java.math.BigDecimal;
@@ -89,9 +94,7 @@ public class BusinessCase {
             }
 
         // Printing all Departure Airport Code with total of itineraries each.
-        hashtable.forEach((k, v) -> {
-            System.out.println("Itinerary per Departures is '" + k + "' has total of " + v + " itineraries.");
-        });
+        hashtable.forEach((k, v) -> System.out.println("Itinerary per Departures is '" + k + "' has total of " + v + " itineraries."));
 
         Hashtable<String, Integer> hashtable2 = new Hashtable<>();
         for (Itinerary itinerary : itineraries.readItineraries())
@@ -103,9 +106,7 @@ public class BusinessCase {
             }
 
         // Printing all Departure Airport Code with total of itineraries each.
-        hashtable2.forEach((k, v) -> {
-            System.out.println("Itinerary per Destination is '" + k + "' has total of " + v + " itineraries.");
-        });
+        hashtable2.forEach((k, v) -> System.out.println("Itinerary per Destination is '" + k + "' has total of " + v + " itineraries."));
         System.out.println();
     }
 
@@ -162,7 +163,6 @@ public class BusinessCase {
         Hashtable<Integer, Integer> hashtable = collectionOfTicketsWithCustomers(tickets);
 
         // Checking which customerId is missing from our hashtable, and then we insert him on our list.
-        List<String> customersWithNoPurchase = new ArrayList<>();
         for (Customer customer : customers.readCustomers())
             if (!hashtable.containsKey(customer.getId()))
                 System.out.println(customer.getName());

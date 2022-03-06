@@ -1,7 +1,13 @@
+/**
+ * The TicketRepositoryImpl class inherit the properties of the TicketRepository class.
+ *
+ * @author Evanthios Papadopoulos
+ * @since 02-Mar-22
+ */
+
 package com.travelcompany.eshop.repository;
 
 import com.travelcompany.eshop.exception.TicketException;
-import com.travelcompany.eshop.model.Customer;
 import com.travelcompany.eshop.model.Ticket;
 
 import java.util.ArrayList;
